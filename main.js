@@ -1,23 +1,13 @@
 function robVeg() {
-  console.show()
-  console.log("开始运行")
-  toast("程序开始启动");
   launchApp("美团买菜");
   waitForPackage("com.meituan.retail.v.android", 200);
-  console.log("程序启动等待中")
   auto.waitFor();
-  toast("程序启动成功");
-  console.log("查找btn_skip")
   const btn_skip = id("btn_skip").findOne();
-  console.log("程序启动btn_skip")
   if (btn_skip) {
     btn_skip.click();
     toast("已跳过首屏广告");
-  }else{
-    console.log("不在开屏广告界面");
   }
   sleep(1000);
-  console.log("下一步打开购物车");
   gotoBuyCar();
   sleep(1000);
   checkAll();
