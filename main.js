@@ -1,4 +1,23 @@
+// 解锁手机屏幕
+function unLock() {
+  if (!device.isScreenOn()) {
+    device.wakeUp();
+    sleep(500);
+    swipe(500, 2000, 500, 1000, 200);
+    sleep(500);
+    const password = "123456"; //这里换成自己的手机解锁密码
+    for (let i = 0; i < password.length; i++) {
+      let position = text(password[i]).findOne().bounds();
+      click(position.centerX(), position.centerY());
+      sleep(100);
+    }
+  }
+  sleep(1000);
+}
+
+//抢菜流程
 function robVeg() {
+  unLock();
   launchApp("美团买菜");
   waitForPackage("com.meituan.retail.v.android", 200);
   auto.waitFor();

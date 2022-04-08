@@ -91,11 +91,20 @@ function checkAll() {
 
 > https://g.pro.autojs.org/docs/#/zh-cn/console
 
-项目中容易踩到的坑，给大家提个醒：
+9.调试完成后，确定代码可以正常运行了，可以在 Auto.js 上新建一个脚本文件，把写好的代码放进去，然后点击文件右侧的三个点->更多->定时任务，可以设置成早上 6 点。
+
+![image-20220408164107042](https://gitee.com/qulingyuan/ly_picture/raw/master/img/image-20220408164107042.png)
+
+
+
+![image-20220408164221962](https://gitee.com/qulingyuan/ly_picture/raw/master/img/image-20220408164221962.png)
+
+## 项目中容易踩到的坑，给大家提个醒：
 
 1. 一定要打开无障碍功能！如果发现无法选取元素了或者什么其他异常，大概率是无障碍功能关闭了，是的，无障碍功能有时候会自动关闭。
 2. 手机的 GPS 打开。
 3. 需要提前把商品添加到购物车里，不然购物车是空的，啥也买不了。
+3. 注意美团买菜的版本，不同版本元素不一样，代码执行不了的。
 
 ## 原理
 
