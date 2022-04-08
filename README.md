@@ -2,27 +2,27 @@
 
 ## 开发步骤：
 
-1. 下载 `Auto.js` 安装包，目前官网提供的是 `Auto.js Pro`，是收费的，45 块钱买断制，还是良心的，建议大家购买。不过这里也分享一下免费版本(非破解版，是开始收费前的免费版，网上听说很多版本是有毒的，这个是我以身试毒后确认无毒的，大家可放心使用)—— 链接: https://pan.baidu.com/s/1zBTij7imoLCKf1bm7HtY6Q 提取码: n9jc --来自百度网盘超级会员v3的分享
+1. 下载 `Auto.js` 安装包，目前官网提供的是 `Auto.js Pro`，是收费的，45 块钱买断制，还是良心的，建议大家购买。不过这里也分享一下免费版本(非破解版，是开始收费前的免费版，网上听说很多版本是有毒的，这个是我以身试毒后确认无毒的，大家可放心使用)—— 链接: https://pan.baidu.com/s/1zBTij7imoLCKf1bm7HtY6Q 提取码: n9jc --来自百度网盘超级会员 v3 的分享
 
 2. 安装软件后，开启应用的**无障碍**和**悬浮窗**功能。
 
 ![image-20220406221255685](https://gitee.com/qulingyuan/ly_picture/raw/master/img/image-20220406221255685.png)
 
-3. 可以使用悬浮窗的工具来检查 app的元素。
+3. 可以使用悬浮窗的工具来检查 app 的元素。
 
    ![image-20220406225906556](https://gitee.com/qulingyuan/ly_picture/raw/master/img/image-20220406225906556.png)
 
    ![image-20220406225941640](https://gitee.com/qulingyuan/ly_picture/raw/master/img/image-20220406225941640.png)
 
-3. 打开 VS Code，安装`Auto.js-VSCodeExt`插件。
+4. 打开 VS Code，安装`Auto.js-VSCodeExt`插件。
 
 ![image-20220406222424648](https://gitee.com/qulingyuan/ly_picture/raw/master/img/image-20220406222424648.png)
 
-4. `Command+shift+P`快捷键打开 `Command Palette`，运行 `Auto.js:New Project`命令创建一个新项目。
+5. `Command+shift+P`快捷键打开 `Command Palette`，运行 `Auto.js:New Project`命令创建一个新项目。
 
 ![image-20220406222958526](https://gitee.com/qulingyuan/ly_picture/raw/master/img/image-20220406222958526.png)
 
-5. 在 main.js 文件中编写脚本：
+6. 在 main.js 文件中编写脚本：
 
 ```js
 function robVeg() {
@@ -73,8 +73,11 @@ function checkAll() {
 项目中容易踩到的坑，给大家提个醒：
 
 1. 一定要打开无障碍功能！如果发现无法选取元素了或者什么其他异常，大概率是无障碍功能关闭了，是的，无障碍功能有时候会自动关闭。
-2. 手机的GPS 打开。
+2. 手机的 GPS 打开。
+3. 需要提前把商品添加到购物车里，不然购物车是空的，啥也买不了。
 
-项目地址：
+## 原理
 
-现在的代码是一个半成品，因为白天点击结算按钮后面的场景只有”我知道了“这个场景，正常购买场景走不进去了，我打算明天早上 5:30起床调试脚本，把场景都记下来。但结算之前的脚本在我的手机上测试都是可用的，不过也可能会因为机型的不同会有不同，就需要大家自己调试了。
+这个脚本的原理是找到屏幕上对应的按钮，模仿人的点击等手势动作，把抢菜的一系列操作封装成脚本。然后 Auto.js 有定时执行脚本功能，这样就不用早上六点钟起来自己点了。Auto.js 的功能很强大，网上搜资料的时候发现还可以搞支付宝的蚂蚁森林的能量收集，还有游戏脚本啥的，后面还可以研究研究。
+
+现在的代码是一个半成品，因为白天点击结算按钮后面的场景只有”我知道了“这个场景，正常购买场景走不进去了，我打算明天早上 5:30 起床调试脚本，把场景都记下来。但结算之前的脚本在我的手机上测试都是可用的，不过也可能会因为机型的不同会有不同，就需要大家自己调试了。
