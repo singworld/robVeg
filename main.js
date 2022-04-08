@@ -7,9 +7,9 @@ function robVeg() {
     btn_skip.click();
     toast("已跳过首屏广告");
   }
-  sleep(1000);
+  sleep(2000);
   gotoBuyCar();
-  sleep(1000);
+  sleep(2000);
   checkAll();
   sleep(2000);
   submitOrder(0);
@@ -19,9 +19,8 @@ robVeg();
 
 //打开购物车页面
 function gotoBuyCar() {
-  const buyCarBtn = id("cartredDotTextView").findOne();
-  if (buyCarBtn) {
-    buyCarBtn.parent().click();
+  if (id("img_shopping_cart").exists()) {
+    id("img_shopping_cart").findOne().parent().click();
     toast("已进入购物车");
   } else {
     toast("没找到购物车");
@@ -63,11 +62,10 @@ function submitOrder(count) {
     exit;
   }
   sleep(800);
-  count = count++;
   if (count > 10000) {
     toast("没抢到");
     exit;
   }
 
-  submitOrder(count);
+  submitOrder(count++);
 }
