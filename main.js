@@ -15,17 +15,26 @@ function unLock() {
   sleep(1000);
 }
 
+//跳过开屏广告
+function skip() {
+  if (id("btn_skip").exists()) {
+    const btn_skip = id("btn_skip").findOne();
+    if (btn_skip) {
+      btn_skip.click();
+      toast("已跳过首屏广告");
+    }
+  } else {
+    toast("没找到首屏广告");
+  }
+}
+
 //抢菜流程
 function robVeg() {
-  unLock();
+  // unLock();
   launchApp("美团买菜");
-  waitForPackage("com.meituan.retail.v.android", 200);
+  waitForPackage("com.meituan.retail.v.android", 2000);
   auto.waitFor();
-  const btn_skip = id("btn_skip").findOne();
-  if (btn_skip) {
-    btn_skip.click();
-    toast("已跳过首屏广告");
-  }
+  skip();
   sleep(2000);
   gotoBuyCar();
   sleep(2000);
@@ -34,6 +43,8 @@ function robVeg() {
   submitOrder(0);
 }
 
+const music =
+"/storage/emulated/0/Download/WeiXin/canon.mp3";
 robVeg();
 
 //打开购物车页面
@@ -61,30 +72,61 @@ function checkAll() {
 }
 
 function submitOrder(count) {
-  if (textStartsWith("结算(").exists()) {
-    textStartsWith("结算(").findOne().parent().click();
-  } else if (text("我知道了").exists()) {
+  // toast("正在抢……"+count);
+  if (text("我知道了").exists()) {
     toast("关闭我知道了");
     text("我知道了").findOne().parent().click();
-  } else if (text("重新加载").exists()) {
+  } 
+   else if (textStartsWith("结算(").exists()) {
+    textStartsWith("结算(").findOne().parent().click();
+    toast("点击结算");
+  }
+  else if (text("重新加载").exists()) {
     toast("重新加载");
     text("重新加载").findOne().parent().click();
-  } else if (text("立即支付").exists()) {
+  } else if (text("返回购物车").exists()) {
+    toast("返回购物车");
+    text("返回购物车").findOne().parent().click();
+  } 
+  else if (text("放弃").exists()) {
+    toast("放弃");
+    text("放弃").findOne().parent().click();
+  } 
+  
+  else if (text("极速支付").exists()) {
+    text("极速支付").findOne().parent().click();
+    toast("极速支付");
+  }
+
+  else if (text("免密支付").exists()) {
+    if (files.exists(music)){
+      media.playMusic(music);
+      sleep(media.getMusicDuration());
+    }else{
+      toast("抢到了 没找到音乐");
+    }
+  }
+  
+  else if (text("立即支付").exists()) {
     text("立即支付").findOne().parent().click();
   } else if (text("确认支付").exists()) {
-    const music =
-      "/storage/emulated/0/netease/cloudmusic/Music/Joel Hanson Sara Groves - Traveling Light.mp3";
-    media.playMusic(music);
-    sleep(media.getMusicDuration());
+
+    if (files.exists(music)){
+      media.playMusic(music);
+      sleep(media.getMusicDuration());
+    }else{
+      toast("抢到了 没找到音乐");
+    }
+
   } else {
     toast("抢个屁！");
     exit;
   }
-  sleep(800);
+  sleep(500);
   if (count > 10000) {
     toast("没抢到");
     exit;
   }
 
-  submitOrder(count++);
+  submitOrder(++count);
 }
